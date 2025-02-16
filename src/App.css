@@ -23,4 +23,43 @@ svg {
   
 }
 
+input[type="checkbox"] {
+    appearance: none; /* Remove default styling */
+    width: 14px;
+    height: 14px;
+    border: 3px solid #949494; /* Border color */
+   /* Rounded corners */
+    cursor: pointer;
+    border-radius: 2px;
+    position: relative;
+    background-color: #f2f2f2; /* Default background */
+  }
+  
+  /* Change background color to purple when checked */
+  input[type="checkbox"]:checked {
+    background-color: purple; /* Purple background */
+    border-color: purple; /* Purple border */
+  }
+  
+  /* Add a white checkmark when checked */
+  input[type="checkbox"]:checked::after {
+    content: "✔"; /* Checkmark symbol */
+    color: white; /* White checkmark */
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
+  hr{
+    border: none; /* Remove the default border */
+  height: 1px; /* Set the height of the line */
+  background-color: #ccc; 
+  }
+
+ /* Container for checkbox and label */
+
+  
+  /* Hide the default checkbox */
+  
