@@ -57,6 +57,29 @@ input[type="checkbox"] {
   height: 1px; /* Set the height of the line */
   background-color: #ccc; 
   }
+.Todos-drag{
+
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   
+    background-color: white;
+}
+
+.delete-edit{
+    
+    box-sizing: border-box;
+    padding-left: 10px;
+    border-radius: 12px;
+    font-weight:bold;
+    width: 134px;
+    height: 76;
+    font-size: 14px;
+    right: 100%;
+    top:80%;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: white;
+}
+  
 
  /* Container for checkbox and label */
 

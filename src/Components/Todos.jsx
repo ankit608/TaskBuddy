@@ -3,12 +3,27 @@ import DotsIcon from './Icons'
 import { IconSvg } from './Icons'
 import { CheckmarkIcon } from './Icons'
 import { DotsIcon1 } from './Icons'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useRef } from 'react'
 
-const Todos = ({ id, text, date, onDragStart, onDrop }) => {
+const Todos = ({ id, Task_name, Due_on, Task_status, Task_category, onDragStart, onDrop,Select,Selectvalue }) => {
     const [isDragging, setIsDragging] = useState(false);
     const draggableRef = useRef(null);
+    const handleSelect = (event) => {
+        const checked = event.target.checked;
+        if (checked) {
+        
+          // Add the id to the current state (if it's not already present)
+          Select((state) => {
+            return state.includes(id) ? state : [...state, id];
+          });
+          
+        } else {
+          // Remove the id from the current state by filtering it out
+          const updated = Selectvalue.filter((v) => v !== id);
+          Select(updated);
+        }
+      };
   
     const handleDragStart = (e) => {
       setIsDragging(true);
@@ -34,13 +49,14 @@ const Todos = ({ id, text, date, onDragStart, onDrop }) => {
   
     return (
       <div
+      className={isDragging?"Todos-drag":""}
         ref={draggableRef}
         style={{
           display: "flex",
           width: "100%",
           boxSizing: "border-box",
           padding: "20px",
-          backgroundColor: isDragging ? "#E0E0E0" : "#F1F1F1",
+          backgroundColor: isDragging ? "white" : "#F1F1F1",
           alignItems: "center",
           opacity: isDragging ? 0.8 : 1,
           cursor: isDragging ? "grabbing" : "grab",
@@ -52,21 +68,22 @@ const Todos = ({ id, text, date, onDragStart, onDrop }) => {
         onDrop={handleDrop}
       >
         <div style={{ display: "flex", flex: 1, gap: "9px", alignItems: "center" }}>
-          <input type="checkbox" />
+          <input type="checkbox"  onChange={handleSelect}/>
           <DotsIcon1 />
           <CheckmarkIcon />
-          <div>{text}</div> {/* Now displaying the actual task text */}
+          <div>{Task_name}</div> {/* Now displaying the actual task text */}
         </div>
-        <div style={{ flex: 1 }}>{date}</div>
+        <div style={{ flex: 1 }}>{Due_on}</div>
         <div style={{ flex: 1 }}>
           <span style={{ borderRadius: "4px", backgroundColor: "#DDDADD", padding: "5px" }}>
-            <b>TO-DO</b>
+            <b>{Task_status}</b>
           </span>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", flex: 1 }}>
-          <div>Personal</div>
-          <DotsIcon />
+          <div>{Task_category}</div>
+          <DotsIcon id={id}/>
         </div>
+        
       </div>
     );
   };
