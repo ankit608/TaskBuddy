@@ -5,14 +5,20 @@ import { CheckmarkIcon } from './Icons'
 import { DotsIcon1 } from './Icons'
 import { useState,useEffect } from 'react'
 import { useRef } from 'react'
+import TaskStatusOption from './TaskStatusOption'
 
 const Todos = ({ id, Task_name, Due_on, Task_status, Task_category, onDragStart, onDrop,Select,Selectvalue }) => {
     const [isDragging, setIsDragging] = useState(false);
+    const data = [id]
+    const[visible,Setvisible] = useState(false)
+    const HandleVisible = ()=>{
+       Setvisible(!visible)
+    }
     const draggableRef = useRef(null);
     const handleSelect = (event) => {
         const checked = event.target.checked;
         if (checked) {
-        
+          
           // Add the id to the current state (if it's not already present)
           Select((state) => {
             return state.includes(id) ? state : [...state, id];
@@ -75,8 +81,10 @@ const Todos = ({ id, Task_name, Due_on, Task_status, Task_category, onDragStart,
         </div>
         <div style={{ flex: 1 }}>{Due_on}</div>
         <div style={{ flex: 1 }}>
-          <span style={{ borderRadius: "4px", backgroundColor: "#DDDADD", padding: "5px" }}>
+         
+          <span style={{ borderRadius: "4px", backgroundColor: "#DDDADD", padding: "5px", position:"relative" }} onClick={HandleVisible}>
             <b>{Task_status}</b>
+            {visible?<TaskStatusOption width={"100%"} data={data}></TaskStatusOption>:""} 
           </span>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", flex: 1 }}>

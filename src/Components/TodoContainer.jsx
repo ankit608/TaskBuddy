@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Todos from './Todos';
 import AddTask from './AddTask';
-import axios from 'axios';
+
 import { useContext } from 'react';
 import {Task_Context} from '../Context/TaskContext';
 
-const TodoContainer = () => {
+const TodoContainer = ({select,Setselect}) => {
     const { initialstate, dispatch } = useContext(Task_Context);
-   const [select,Setselect] = useState([])
-
+   
+    console.log(initialstate,"hfjs")
+         
   const [draggedItemId, setDraggedItemId] = useState(null);
 
   const handleDragStart = (id) => {
@@ -43,8 +44,8 @@ const TodoContainer = () => {
           
         ))}
       </div>
-      
     
+     
     </div>
   );
 };

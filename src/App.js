@@ -5,8 +5,13 @@ import TodoContainer from './Components/TodoContainer';
 import InProgress from './Components/InProgress';
 import DraggableComponent from './Components/DraggableComponent';
 import TaskContext from './Context/TaskContext';
+import DeleteSelected from './Components/DeleteSelected';
+import { useState } from 'react';
 
 function App() {
+
+  const [select,Setselect] = useState([])
+
   return (
    
      <>
@@ -18,8 +23,10 @@ function App() {
         <div>Task Status</div>
         <div>Task Category</div>
       </div>
-      <TodoContainer></TodoContainer>
+      <TodoContainer select= {select} Setselect={Setselect}></TodoContainer>
       <InProgress></InProgress>
+        
+       {select.length>0?<DeleteSelected length= {select.length} data={select} Setselect={Setselect}></DeleteSelected>:""} 
       </TaskContext>
 
      </>

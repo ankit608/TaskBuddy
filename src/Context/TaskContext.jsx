@@ -22,10 +22,13 @@ const reducer = (state, action) => {
 
     case "MultiUpdate":
         return state.map((item) => {
-            
+            console.log("inside Reducer",action.payload)
             const updatedItem = action.payload.find((u) => u.id === item.id);
-             item.Task_status = updatedItem.Task_status
-            return  item;
+            if(updatedItem){
+              item.Task_status = updatedItem.Task_status
+              return  item;
+            }
+            return item
           });
           
     case "SET_TODOS":
