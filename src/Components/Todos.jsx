@@ -84,7 +84,7 @@ const Todos = ({ id, Task_name, Due_on, Task_status, Task_category, onDragStart,
          
           <span style={{ borderRadius: "4px", backgroundColor: "#DDDADD", padding: "5px", position:"relative" }} onClick={HandleVisible}>
             <b>{Task_status}</b>
-            {visible?<TaskStatusOption width={"100%"} data={data}></TaskStatusOption>:""} 
+            {visible?<TaskStatusOption width={"200%"} data={data}></TaskStatusOption>:""} 
           </span>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", flex: 1 }}>

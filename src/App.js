@@ -4,18 +4,36 @@ import Dashboard from './Components/dashboard';
 import TodoContainer from './Components/TodoContainer';
 import InProgress from './Components/InProgress';
 import DraggableComponent from './Components/DraggableComponent';
-import TaskContext from './Context/TaskContext';
+import TaskContext, { Task_Context } from './Context/TaskContext';
 import DeleteSelected from './Components/DeleteSelected';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 function App() {
-
+ const {initialstate, dispatch} = useContext(Task_Context)
   const [select,Setselect] = useState([])
+  const [todos, setTodos] = useState([])
+  const [progress, setProgress] = useState([])
+  const [completed, setCompleted] = useState([])
+
+  useEffect(()=>{
+    const Todo = initialstate.filter((a) => a.Task_status === "To-Do");
+    
+     const Progress =  initialstate.filter((a)=> a.Task_status==="In-Progress")
+
+   const Completed =  initialstate.filter((a)=>a.Task_status==="Completed")
+      
+    
+    setCompleted(Completed)
+    setProgress(Progress)
+    setTodos(Todo)
+ 
+   
+  },[initialstate])
 
   return (
    
-     <>
-     <TaskContext>
+     <div style={{position:"relative"}}>
+    
       <Dashboard></Dashboard>
       <div style={{display:"flex", justifyContent:"space-between", width:"80%" , fontSize:"14px", paddingLeft:"20px"}}>
         <div>Task name</div>
@@ -23,13 +41,14 @@ function App() {
         <div>Task Status</div>
         <div>Task Category</div>
       </div>
-      <TodoContainer select= {select} Setselect={Setselect}></TodoContainer>
-      <InProgress></InProgress>
+      <TodoContainer select= {select} Setselect ={Setselect} todos={todos}></TodoContainer>
+      <TodoContainer select= {select} Setselect ={Setselect} todos={progress}></TodoContainer>
+      <TodoContainer select= {select} Setselect ={Setselect} todos={completed}></TodoContainer>
         
        {select.length>0?<DeleteSelected length= {select.length} data={select} Setselect={Setselect}></DeleteSelected>:""} 
-      </TaskContext>
+   
 
-     </>
+       </div>
   );
 }
 

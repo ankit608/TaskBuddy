@@ -20,8 +20,8 @@ const DeleteSelected = ({length,data,Setselect}) => {
     }
 
   return (
-    <div style={{position:"relative"}}>
-        <div style={{backgroundColor:"#1A1C20" , position:"absolute", borderRadius:"12px",fontSize:"12px", padding:"8px", cursor:"pointer", left:"40%"}}>
+    <div style={{position:"fixed", top:"90vh", left:"40%"}}>
+        <div style={{backgroundColor:"#1A1C20" , borderRadius:"12px",fontSize:"12px", padding:"8px", cursor:"pointer", left:"40%"}}>
       <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
         <div style={{display:"flex", alignItems:"center", justifyContent:"center",gap:"10px"}}>
             <div style={{display:"flex", alignItems:"center", justifyContent:"center", borderRadius:"12px", border: "solid 0.2px #FFFFFF",width:"139px", height:"27px",color:"white" , fontSize:"12px",gap:"5px"}}>{length} task Selected <span>X</span></div>

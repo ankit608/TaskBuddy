@@ -5,10 +5,10 @@ import AddTask from './AddTask';
 import { useContext } from 'react';
 import {Task_Context} from '../Context/TaskContext';
 
-const TodoContainer = ({select,Setselect}) => {
+const TodoContainer = ({select,Setselect,todos,backgroundColor}) => {
     const { initialstate, dispatch } = useContext(Task_Context);
    
-    console.log(initialstate,"hfjs")
+console.log(todos,"fhsdkfghjsdkjhf")
          
   const [draggedItemId, setDraggedItemId] = useState(null);
 
@@ -31,18 +31,18 @@ const TodoContainer = ({select,Setselect}) => {
 
   return (
     <div style={{ fontSize: 14 }}>
-      <div style={{ backgroundColor: "#FAC3FF", borderTopLeftRadius: "12px", borderTopRightRadius: "12px", paddingLeft: "20px" }}>
-        Todo ({initialstate.length})
+      <div style={{ backgroundColor: backgroundColor?backgroundColor: "#FAC3FF", borderTopLeftRadius: "12px", borderTopRightRadius: "12px", paddingLeft: "20px" }}>
+        Todo ({todos.length})
       </div>
       <AddTask />
       <div>
-        {initialstate.map((todo) => (
+        {todos.length>0?todos.map((todo) => (
           <div>
             <Todos key={todo.id} id={todo.id} Task_name={todo.Task_name} Due_on={todo.Due_on} Task_category={todo.Task_category} Task_status={todo.Task_status} onDragStart={handleDragStart} onDrop={handleDrop} Select={Setselect} Selectvalue={select}/>
             <hr></hr>
           </div>
           
-        ))}
+        )):""}
       </div>
     
      
