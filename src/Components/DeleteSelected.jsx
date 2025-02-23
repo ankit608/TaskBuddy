@@ -29,7 +29,7 @@ const DeleteSelected = ({length,data,Setselect}) => {
         </div>
          <div style={{display:"flex", alignItems:"center", gap:"10px"}}>
             <div onClick={HandleVisible} style={{position:"relative",display:"flex", alignItems:"center", justifyContent:"center", width:"63px", height:"27px",color:"white",borderRadius:"12px",border: "solid 0.1px #FFFFFF"}}>
-               {visible?<TaskStatusOption backgroundColor={"black"} Fontcolor={"white"} width={"200%"} data={data}></TaskStatusOption>:""}
+               {visible?<TaskStatusOption backgroundColor={"black"} Fontcolor={"white"} width={"200%"} data={data} setSelect={Setselect}></TaskStatusOption>:""}
                 Status</div>
             <div style={{display:"flex", alignItems:"center", backgroundColor:"#E1383814",justifyContent:"center",width:"63px", height:"27px", color:"#E13838", border: "solid 0.1px #FF3535" , borderRadius:"12px"}} onClick={HandleDelete}>Delete</div>
          </div>

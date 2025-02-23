@@ -77,7 +77,7 @@ const Todos = ({ id, Task_name, Due_on, Task_status, Task_category, onDragStart,
           <input type="checkbox"  onChange={handleSelect}/>
           <DotsIcon1 />
           <CheckmarkIcon />
-          <div>{Task_name}</div> {/* Now displaying the actual task text */}
+          <div style={Task_status==="Completed"?{textDecoration:"line-through"}:{}}>{Task_name}</div> {/* Now displaying the actual task text */}
         </div>
         <div style={{ flex: 1 }}>{Due_on}</div>
         <div style={{ flex: 1 }}>

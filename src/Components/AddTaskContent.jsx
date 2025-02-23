@@ -1,12 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Add from './Add'
 import Add2 from './Add2'
+import { useContext } from 'react'
+import { Task_Context } from '../Context/TaskContext'
 const AddTaskContent = () => {
-
+     const {dispatch}  = useContext(Task_Context)
     const [task,setTask]  = useState(null)
-    const [Due_on,setDue_on] = useState(null)
+    const [Due_on,setDue_on] = useState("23/09/2025")
     const [category,setCategory] =  useState(null)
+    const [id,setId] =  useState(null)
     const[status, setStatus] = useState(null)
+      
+    useEffect(()=>{
+      const num = Math.random()*20
+      console.log(num,"num")
+      setId(num)
+    },[])
+
+    const SubmitTask = () =>{
+      
+      
+ 
+       if(task&&Due_on&&category&&status&&id){
+        console.log(task,Due_on,category,status,id)
+          dispatch({ type:"ADD", payload:{Task_name:task,Due_on,Task_category:category,Task_status:status,id:id}})
+       } 
+    }
     const HandleTask = (event) =>{
        const value = event.target.value
        console.log(value)
@@ -36,7 +55,7 @@ fontSize: "16px",
 />
     </div>
     <div style={{display:"flex", alignItems:"center", gap:"20px", marginTop:"10px"}}>
-    <div style={{display:"flex" , width:"80px", height:'30px', borderRadius:"60px", backgroundColor:"#7B1984", color:"white", alignItems:"center", justifyContent:"center"}}>ADD</div>
+    <div style={{display:"flex" , width:"80px", height:'30px', borderRadius:"60px", backgroundColor:"#7B1984", color:"white", alignItems:"center", justifyContent:"center", cursor:"pointer"}} onClick={()=>{SubmitTask()}}>ADD</div>
     <div style={{display:"flex"}}>Cancel</div>
     </div>
     
@@ -58,8 +77,8 @@ d="M16 15.5h-3v-3a.5.5 0 0 0-1 0v3H9a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5
 </svg>Add date
        </div>       
    </div>
-   <Add></Add>
-   <Add2></Add2>
+   <Add AddTask={true} setStatus={setStatus}></Add>
+   <Add2 setCategory={setCategory}></Add2>
   
 </div>
   )

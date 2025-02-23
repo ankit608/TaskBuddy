@@ -41,9 +41,9 @@ function App() {
         <div>Task Status</div>
         <div>Task Category</div>
       </div>
-      <TodoContainer select= {select} Setselect ={Setselect} todos={todos}></TodoContainer>
-      <TodoContainer select= {select} Setselect ={Setselect} todos={progress}></TodoContainer>
-      <TodoContainer select= {select} Setselect ={Setselect} todos={completed}></TodoContainer>
+      <TodoContainer select= {select} Setselect ={Setselect} todos={todos} status={"To-Do"} ></TodoContainer>
+      <TodoContainer select= {select} Setselect ={Setselect} todos={progress} backgroundColor={"#85D9F1"} status={"In-Progress"}></TodoContainer>
+      <TodoContainer select= {select} Setselect ={Setselect} todos={completed} backgroundColor={"#CEFFCE"} status={"Completed"}></TodoContainer>
         
        {select.length>0?<DeleteSelected length= {select.length} data={select} Setselect={Setselect}></DeleteSelected>:""} 
    

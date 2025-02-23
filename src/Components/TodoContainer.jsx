@@ -5,8 +5,9 @@ import AddTask from './AddTask';
 import { useContext } from 'react';
 import {Task_Context} from '../Context/TaskContext';
 
-const TodoContainer = ({select,Setselect,todos,backgroundColor}) => {
+const TodoContainer = ({select,Setselect,todos,backgroundColor,status}) => {
     const { initialstate, dispatch } = useContext(Task_Context);
+   
    
 console.log(todos,"fhsdkfghjsdkjhf")
          
@@ -32,9 +33,9 @@ console.log(todos,"fhsdkfghjsdkjhf")
   return (
     <div style={{ fontSize: 14 }}>
       <div style={{ backgroundColor: backgroundColor?backgroundColor: "#FAC3FF", borderTopLeftRadius: "12px", borderTopRightRadius: "12px", paddingLeft: "20px" }}>
-        Todo ({todos.length})
+        {status} ({todos.length})
       </div>
-      <AddTask />
+      { backgroundColor? "" :<AddTask />}
       <div>
         {todos.length>0?todos.map((todo) => (
           <div>

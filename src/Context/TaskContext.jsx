@@ -10,8 +10,9 @@ const initialState = [];
 // Reducer expecting an action with a type and payload
 const reducer = (state, action) => {
   switch (action.type) {
-
+    
     case "ADD": 
+          console.log(action.payload)
           return [...state,action.payload]
 
     case "DELETE":
